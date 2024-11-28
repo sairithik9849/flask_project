@@ -4,6 +4,7 @@ from api import *
 base_route = "/user"
 user_id = "/user/<string:user_id>"
 workouts_user_id = "/workouts/<string:user_id>"
+follow = "/follow-list/<string:user_id>"
 
 routes = {
     RegisterUser: base_route,
@@ -11,7 +12,9 @@ routes = {
     RemoveUser: user_id,
     ListUsers: "/users",
     AddWorkout: workouts_user_id,
-    ListWorkouts: workouts_user_id
+    ListWorkouts: workouts_user_id,
+    FollowFriend: follow,
+    ShowFriendWorkouts: f"{follow}/<string:follow_id>"
 }
 
 methods = {
@@ -20,7 +23,9 @@ methods = {
     RemoveUser: "DELETE",
     ListUsers: "GET",
     AddWorkout: "PUT",
-    ListWorkouts: "GET"
+    ListWorkouts: "GET",
+    FollowFriend: "PUT",
+    ShowFriendWorkouts: "GET"
 }
 
 def init_routes(api):
